@@ -1,39 +1,51 @@
 var SDK = {
 
-  request:function(options, cb){
+  serverURL: "http://localhost:3000/api",
+
+  request: function (options, cb) {
+
+    //Take care of headers
+    var headers = {};
+    if(options.headers){
+      Object.keys(options.headers).forEach(function(h){
+        headers[h] = JSON.stringify(options.headers[h]);
+      });
+    }
+
+    //Perform XHR
     $.ajax({
-      url: "http://localhost:3000/api" + options.url,
+      url: SDK.serverURL + options.url,
       method: options.method,
-      headers: options.headers,
+      headers: headers,
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(options.data),
-      success:function(data, status, xhr){
+      success: function (data, status, xhr) {
         cb(null, data, status, xhr);
       },
-      error:function(xhr, status, errorThrown){
-        cb({xhr:xhr, status:status, error:errorThrown});
+      error: function (xhr, status, errorThrown) {
+        cb({xhr: xhr, status: status, error: errorThrown});
       }
     });
   },
 
-  Book:{
-    getAll:function(){
-
+  Book: {
+    getAll: function (cb) {
+      SDK.request({method: "GET", url: "/books", headers: {filter: {include: "authors"}}}, cb);
     }
   },
 
-  login: function(username, password){
+  login: function (username, password) {
     this.request({
-      data:{
-        username:username,
-        password:password
+      data: {
+        username: username,
+        password: password
       },
       url: "/staffs/login",
       method: "POST"
-    }, function(err, data){
+    }, function (err, data) {
 
-      if(err) return console.log(err);
+      if (err) return console.log(err);
 
       console.log(data);
 
