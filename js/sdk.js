@@ -1,17 +1,3 @@
-$(document).ready(function () {
-
-  $("#loginButton").on("click", function(e){
-    e.preventDefault();
-
-    var email = $("#inputEmail").val();
-    var pw = $("#inputPassword").val();
-
-    SDK.login(email, pw);
-
-  });
-
-});
-
 var SDK = {
 
   request:function(options, cb){
@@ -29,6 +15,12 @@ var SDK = {
         cb({xhr:xhr, status:status, error:errorThrown});
       }
     });
+  },
+
+  Book:{
+    getAll:function(){
+
+    }
   },
 
   login: function(username, password){

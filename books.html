@@ -8,7 +8,7 @@
 
 
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Bøger</title>
 
 </head>
 <body>
@@ -21,7 +21,8 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -32,50 +33,41 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-              <li><a href="#">Se alle bøger</a></li>
+              <li class="active"><a href="#">Se alle bøger <span class="sr-only">(current)</span></a></li>
               <li><a href="#">Om os</a></li>
               <li><a href="#">Kontakt</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">Login <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Login</a></li>
             </ul>
           </div>
         </div>
       </nav>
+
+
+      <div class="page-header">
+        <h1>Se alle bøger</h1>
+
+        <table class="table">
+          <thead>
+            <th>#</th>
+            <th>Titel</th>
+            <th>Undertitel</th>
+            <th>Forfatter(e)</th>
+            <th>Udgiver</th>
+            <th>Pris</th>
+          </thead>
+          <tbody id="booksTableBody">
+
+          </tbody>
+        </table>
+
+      </div>
+
+
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <form class="form-horizontal">
-        <fieldset>
-
-          <legend>Login</legend>
-
-          <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-          </div>
-
-          <button class="btn btn-success pull-right" id="loginButton">Login</button>
-
-        </fieldset>
-      </form>
-    </div>
-  </div>
-
 </div>
-
-
 
 <footer class="footer">
   <div class="container">
@@ -86,7 +78,8 @@
 <script src="lib/js/jquery-3.1.1.js"></script>
 <script src="lib/js/bootstrap.js"></script>
 <script src="js/sdk.js"></script>
-<script src="js/login.page.js"></script>
+<script src="js/books.page.js"></script>
+
 
 </body>
 </html>
