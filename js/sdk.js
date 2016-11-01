@@ -31,7 +31,7 @@ var SDK = {
 
   Book: {
     getAll: function (cb) {
-      SDK.request({method: "GET", url: "/books", headers: {filter: {include: "authors"}}}, cb);
+      SDK.request({method: "GET", url: "/books", headers: {filter: {include: ["authors", "publisher"]}}}, cb);
     }
   },
 
