@@ -90,7 +90,13 @@ var SDK = {
       window.localStorage.setItem(this.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
     },
     load: function (key) {
-      return window.localStorage.getItem(this.prefix + key);
+      var val = window.localStorage.getItem(this.prefix + key);
+      try {
+        return JSON.parse(val);
+      }
+      catch (e){
+        return val;
+      }
     },
     remove:function (key) {
       window.localStorage.removeItem(this.prefix + key);
