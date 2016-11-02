@@ -91,7 +91,6 @@ $(document).ready(function () {
 
     });
 
-
     $("#createBookButton").on("click", function(){
 
       //Create JSON object
@@ -114,7 +113,7 @@ $(document).ready(function () {
       SDK.Book.create(book, function(err, data){
         if(err) throw err;
 
-        console.log("SUCCESS", data);
+        $("#newBookModal").modal("hide");
       });
 
     });
