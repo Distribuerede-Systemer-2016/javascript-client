@@ -13,6 +13,48 @@
 </head>
 <body>
 
+
+<!-- New Book Modal -->
+<div class="modal fade" id="newBookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New book title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New User Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New user title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container">
 
   <div class="row">
@@ -21,7 +63,8 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -37,7 +80,7 @@
               <li><a href="#">Kontakt</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="login.html">Login</a></li>
+              <li><a href="login.html">Logud</a></li>
             </ul>
           </div>
         </div>
@@ -56,19 +99,22 @@
 
           <table class="table table-striped">
             <thead>
-              <th>Titel</th>
-              <th>Undertitel</th>
-              <th>Forfatter(e)</th>
-              <th>Udgiver</th>
-              <th style="width: 75px;">Pris</th>
-              </thead>
+            <th>Titel</th>
+            <th>Undertitel</th>
+            <th>Forfatter(e)</th>
+            <th>Udgiver</th>
+            <th style="width: 75px;">Pris</th>
+            </thead>
             <tbody id="booksTableBody">
 
             </tbody>
           </table>
 
           <hr>
-          <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Opret ny bog</button>
+          <!-- Button trigger modal -->
+          <button class="btn btn-success" data-toggle="modal" data-target="#newUserModal">
+            <span class="glyphicon glyphicon-plus"></span> Opret ny bog
+          </button>
 
         </div>
       </div>
@@ -81,10 +127,10 @@
 
           <table class="table table-striped">
             <thead>
-              <th>Navn</th>
-              <th>Brugernavn</th>
-              <th>Email</th>
-              <th>ID</th>
+            <th>Navn</th>
+            <th>Brugernavn</th>
+            <th>Email</th>
+            <th>ID</th>
             </thead>
             <tbody id="usersTableBody">
 
@@ -92,7 +138,9 @@
           </table>
 
           <hr>
-          <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Opret ny bruger</button>
+          <button class="btn btn-success" data-toggle="modal" data-target="#newBookModal">
+            <span class="glyphicon glyphicon-plus"></span> Opret ny bruger
+          </button>
 
         </div>
       </div>

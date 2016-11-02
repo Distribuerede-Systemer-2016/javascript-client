@@ -26,6 +26,7 @@ $(document).ready(function () {
 
   });
 
+  //Fires on page-load
   SDK.User.getAll(function(err, users){
     if(err) throw err;
 
@@ -40,6 +41,21 @@ $(document).ready(function () {
           "<td>" + user.id+ "</td>" +
         "</tr>");
     });
+
+  });
+
+  /**
+   * Add a new Book
+   */
+  $("#addNewBookButton").on("click", function(){
+
+  });
+
+  /**
+   * Add a new User
+   */
+  $("#addNewUserButton").on("click", function(){
+
 
   });
 
