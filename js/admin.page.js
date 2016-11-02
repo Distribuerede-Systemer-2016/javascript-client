@@ -71,6 +71,7 @@ $(document).ready(function () {
 
     });
 
+    //Fetch authors, and set to DOM
     SDK.Author.getAll(function(err, authors){
       if (err) throw err;
 
@@ -88,10 +89,38 @@ $(document).ready(function () {
 
       });
 
+    });
+
+
+    $("#createBookButton").on("click", function(){
+
+      //Create JSON object
+      var book = {
+        title: $("#bookTitle").val(),
+        subtitle: $("#bookSubTitle").val(),
+        pageCount: $("#bookPageCount").val(),
+        edition: $("#bookEdition").val(),
+        price: $("#bookPrice").val(),
+        authorIds: [],
+        publisherId: $("input[name=publisherRadios]:checked").val()
+      };
+
+      //Fetch selected authors
+      $('#authorsCheckbox').find('input:checked').each(function() {
+        book.authorIds.push($(this).val());
+      });
+
+      //Create book
+      SDK.Book.create(book, function(err, data){
+        if(err) throw err;
+
+        console.log("SUCCESS", data);
+      });
 
     });
 
   });
+
 
 
   //$("input[name=publisherRadios]:checked").val()

@@ -8,7 +8,7 @@ var SDK = {
     var headers = {};
     if (options.headers) {
       Object.keys(options.headers).forEach(function (h) {
-        headers[h] = JSON.stringify(options.headers[h]);
+        headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
       });
     }
 
@@ -32,24 +32,27 @@ var SDK = {
   Book: {
     getAll: function (cb) {
       SDK.request({method: "GET", url: "/books", headers: {filter: {include: ["authors", "publisher"]}}}, cb);
+    },
+    create: function (data, cb) {
+      SDK.request({method: "POST", url: "/books", data: data, headers: {authorization: SDK.Storage.load("tokenId")}}, cb);
     }
   },
 
   User: {
-    getAll:function(cb){
-      SDK.request({method:"GET", url:"/staffs"}, cb);
+    getAll: function (cb) {
+      SDK.request({method: "GET", url: "/staffs"}, cb);
     }
   },
 
-  Publisher: {
-    getAll:function(cb){
-      SDK.request({method:"GET", url:"/publishers"}, cb);
+  Publisher: {
+    getAll: function (cb) {
+      SDK.request({method: "GET", url: "/publishers"}, cb);
     }
   },
 
-  Author: {
-    getAll:function(cb){
-      SDK.request({method:"GET", url:"/authors"}, cb);
+  Author: {
+    getAll: function (cb) {
+      SDK.request({method: "GET", url: "/authors"}, cb);
     }
   },
 
