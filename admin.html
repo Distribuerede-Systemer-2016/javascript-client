@@ -21,10 +21,58 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
             aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">New book title</h4>
+        <h4 class="modal-title">Opret nyt bog</h4>
       </div>
       <div class="modal-body">
-        ...
+
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label" for="bookTitle">Title</label>
+              <input class="form-control" id="bookTitle" type="text">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label" for="bookSubTitle">Under titel</label>
+              <input class="form-control" id="bookSubTitle" type="text">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="bookEdition">Udgave</label>
+              <input class="form-control" id="bookEdition" type="text">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="bookPrice">Pris (kr)</label>
+              <input class="form-control" id="bookPrice" type="text">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="bookPrice">Sideantal</label>
+              <input class="form-control" id="bookPrice" type="text">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" id="publishersRadio">Forlag</label>
+              <!-- Values set by jQuery -->
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" id="authorsCheckbox">Forfatter(e)</label>
+              <!-- Values set by jQuery -->
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,7 +160,7 @@
 
           <hr>
           <!-- Button trigger modal -->
-          <button class="btn btn-success" data-toggle="modal" data-target="#newUserModal">
+          <button class="btn btn-success" id="addNewBookButton">
             <span class="glyphicon glyphicon-plus"></span> Opret ny bog
           </button>
 
@@ -138,7 +186,7 @@
           </table>
 
           <hr>
-          <button class="btn btn-success" data-toggle="modal" data-target="#newBookModal">
+          <button class="btn btn-success" data-toggle="modal" data-target="#newUserModal">
             <span class="glyphicon glyphicon-plus"></span> Opret ny bruger
           </button>
 

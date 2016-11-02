@@ -41,6 +41,18 @@ var SDK = {
     }
   },
 
+  Publisher: {
+    getAll:function(cb){
+      SDK.request({method:"GET", url:"/publishers"}, cb);
+    }
+  },
+
+  Author: {
+    getAll:function(cb){
+      SDK.request({method:"GET", url:"/authors"}, cb);
+    }
+  },
+
   login: function (username, password) {
     this.request({
       data: {
