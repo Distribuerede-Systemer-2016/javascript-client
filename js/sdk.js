@@ -6,8 +6,8 @@ var SDK = {
 
     //Take care of headers
     var headers = {};
-    if(options.headers){
-      Object.keys(options.headers).forEach(function(h){
+    if (options.headers) {
+      Object.keys(options.headers).forEach(function (h) {
         headers[h] = JSON.stringify(options.headers[h]);
       });
     }
@@ -41,15 +41,30 @@ var SDK = {
         username: username,
         password: password
       },
-      url: "/staffs/login",
+      url: "/staffs/login?include=user",
       method: "POST"
     }, function (err, data) {
 
-      if (err) return console.log(err);
+      //On login-error
+      if (err) throw err;
+
+      SDK.Storage.persist("tokenId", data.id);
+      SDK.Storage.persist("userId", data.userId);
+      SDK.Storage.persist("user", data.user);
 
       console.log(data);
 
     });
+  },
+
+  Storage: {
+    prefix: "BookStoreSDK",
+    persist: function (key, value) {
+      localStorage.setItem(this.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
+    },
+    load: function (key) {
+      return localStorage.getItem(this.prefix + key);
+    }
   }
 
 };

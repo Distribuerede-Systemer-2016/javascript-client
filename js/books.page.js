@@ -16,10 +16,10 @@ $(document).ready(function () {
       $booksTableBody.append(
         "<tr>" +
           "<td>" + book.title + "</td>" +
-          "<td>" + book.subtitle + "</td>" +
+          "<td>" + book.subtitle  + "</td>" +
           "<td>" + printAuthors(book.authors) + "</td>" +
           "<td>" + book.publisher.name + "</td>" +
-          "<td>" + book.price + "</td>" +
+          "<td>Kr. " + book.price + ",-</td>" +
         "</tr>");
     });
 

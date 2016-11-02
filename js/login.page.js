@@ -11,6 +11,4 @@ $(document).ready(function () {
 
   });
 
-  SDK.Book.getAll();
-
 });
