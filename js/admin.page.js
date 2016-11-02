@@ -43,6 +43,9 @@ $(document).ready(function () {
 
   });
 
+  var currentUser = SDK.User.current();
+  $("#currentUserName").text(currentUser.firstName +  " " + currentUser.lastName);
+
   /**
    * Add a new Book
    */
@@ -124,7 +127,6 @@ $(document).ready(function () {
    * Add a new User
    */
   $("#addNewUserButton").on("click", function () {
-
 
   });
 

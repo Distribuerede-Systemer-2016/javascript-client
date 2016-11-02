@@ -41,6 +41,9 @@ var SDK = {
   User: {
     getAll: function (cb) {
       SDK.request({method: "GET", url: "/staffs"}, cb);
+    },
+    current:function () {
+      return SDK.Storage.load("user");
     }
   },
 
