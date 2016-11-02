@@ -56,7 +56,13 @@ var SDK = {
     }
   },
 
-  login: function (username, password) {
+  logOut:function() {
+    SDK.Storage.remove("tokenId");
+    SDK.Storage.remove("userId");
+    SDK.Storage.remove("user");
+  },
+
+  login: function (username, password, cb) {
     this.request({
       data: {
         username: username,
@@ -67,13 +73,13 @@ var SDK = {
     }, function (err, data) {
 
       //On login-error
-      if (err) throw err;
+      if (err) return cb(err);
 
       SDK.Storage.persist("tokenId", data.id);
       SDK.Storage.persist("userId", data.userId);
       SDK.Storage.persist("user", data.user);
 
-      console.log(data);
+      cb(null, data);
 
     });
   },
@@ -81,10 +87,13 @@ var SDK = {
   Storage: {
     prefix: "BookStoreSDK",
     persist: function (key, value) {
-      localStorage.setItem(this.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
+      window.localStorage.setItem(this.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
     },
     load: function (key) {
-      return localStorage.getItem(this.prefix + key);
+      return window.localStorage.getItem(this.prefix + key);
+    },
+    remove:function (key) {
+      window.localStorage.removeItem(this.prefix + key);
     }
   }
 

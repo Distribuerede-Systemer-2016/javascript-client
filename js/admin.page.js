@@ -120,10 +120,6 @@ $(document).ready(function () {
 
   });
 
-
-
-  //$("input[name=publisherRadios]:checked").val()
-
   /**
    * Add a new User
    */
@@ -131,5 +127,11 @@ $(document).ready(function () {
 
 
   });
+
+  $("#logOutLink").on("click", function(){
+    SDK.logOut();
+    window.location.href = "index.html";
+  });
+
 
 });
