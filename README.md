@@ -32,3 +32,7 @@ At følgende programmer er installeret på jeres maskiner:
   - Eksempler
 - I koder, jeg hjælper
 - Opsamling
+
+## Misc
+Server connection:
+`https://momentify.eu.ngrok.io/api/`
