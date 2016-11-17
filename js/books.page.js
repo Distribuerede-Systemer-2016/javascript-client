@@ -4,26 +4,28 @@ $(document).ready(function () {
   SDK.Book.getAll(function(err, data){
     if(err) throw err;
 
-    function printAuthors(authors){
-      return authors.map(function(author){
-        return author.firstName + " " + author.lastName;
-      }).join(", ");
-    }
+    var decrypted = encryptDecrypt(data);
+      decrypted = JSON.parse(decrypted);
+
 
     var $booksTableBody = $("#booksTableBody");
-    data.forEach(function (book, i) {
+    decrypted.forEach(function (book, i) {
 
       $booksTableBody.append(
         "<tr>" +
           "<td>" + book.title + "</td>" +
-          "<td>" + book.subtitle  + "</td>" +
-          "<td>" + printAuthors(book.authors) + "</td>" +
-          "<td>" + book.publisher.name + "</td>" +
-          "<td>Kr. " + book.price + ",-</td>" +
+          "<td>" + book.author + "</td>" +
+          "<td>" + book.version + "</td>" +
+          "<td>" + book.priceAB + "</td>" +
+          "<td>" + book.priceSAXO + "</td>" +
+          "<td>" + book.priceCDON + "</td>" +
+          "<td>" + book.ISBN + "</td>" +
         "</tr>");
     });
 
   });
+
+
 
 });
 
