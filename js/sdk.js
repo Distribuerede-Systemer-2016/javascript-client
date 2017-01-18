@@ -1,6 +1,6 @@
 var SDK = {
 
-  serverURL: "http://localhost:3000/api",
+  serverURL: "https://localhost:8000",
 
   request: function (options, cb) {
 
@@ -31,33 +31,33 @@ var SDK = {
 
   Book: {
     getAll: function (cb) {
-      SDK.request({method: "GET", url: "/books", headers: {filter: {include: ["authors", "publisher"]}}}, cb);
+      SDK.request({method: "GET", url: "/getbooks"}, cb);
     },
     create: function (data, cb) {
-      SDK.request({method: "POST", url: "/books", data: data, headers: {authorization: SDK.Storage.load("tokenId")}}, cb);
+      SDK.request({method: "POST", url: "/createbook", data: data }, cb);
     }
   },
-
+    Ads: {
+        getAll: function (cb) {
+            SDK.request({method: "GET", url: "/getads"}, cb);
+        },
+        create: function (data, cb) {
+            SDK.request({method: "POST", url: "/createads", data: data }, cb);
+        }
+    },
   User: {
     getAll: function (cb) {
-      SDK.request({method: "GET", url: "/staffs"}, cb);
+      SDK.request({method: "GET", url: "/getusers"}, cb);
     },
     current:function () {
-      return SDK.Storage.load("user");
-    }
+        return SDK.Storage.load("getuser");
+    },
+      create: function (data, cb) {
+          SDK.request({method: "POST", url: "/createuser" }, cb);
+    },
+      xhrFields: { withCredentials: true },
   },
 
-  Publisher: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/publishers"}, cb);
-    }
-  },
-
-  Author: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/authors"}, cb);
-    }
-  },
 
   logOut:function() {
     SDK.Storage.remove("tokenId");
@@ -71,7 +71,8 @@ var SDK = {
         username: username,
         password: password
       },
-      url: "/staffs/login?include=user",
+        xhrFields: { withCredentials: true },
+      url: "/login",
       method: "POST"
     }, function (err, data) {
 
@@ -81,7 +82,7 @@ var SDK = {
       SDK.Storage.persist("tokenId", data.id);
       SDK.Storage.persist("userId", data.userId);
       SDK.Storage.persist("user", data.user);
-
+  
       cb(null, data);
 
     });

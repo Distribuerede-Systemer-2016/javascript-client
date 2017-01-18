@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.lumen.min.css">
+    <link rel="stylesheet" href="css/sticky-footer.css">
+    <script src="lib/js/jquery-3.1.1.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>Opret din bruger</title>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">Brugtbog</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                        <ul class="nav navbar-nav">
+                            <li><a href="books.html">Se alle bøger</a></li>
+                            <li><a href="omos.html">Om os</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="jumbotron">
+                <h1>Opret din bruger allerede i dag</h1>
+                <p>Det er gratis at blive medlem af brugtbog</p>
+
+                <form>
+                    <input type="text" class="form-control" id="username" placeholder="Brugernavn" var="username">
+                    <input type="password" class="form-control" id="password" placeholder="Kodeord">
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="text"class="form-control" id="address" placeholder="Adresse">
+                    <input type="number" class="form-control" id="phonenumber" placeholder="Telefonnummer">
+                    <p>Mobilepay</p> <input type="checkbox" class="form-control" id="mobilepay">
+                    <p>Kontant</p> <input type="checkbox" class="form-control" id="cash">
+                    <p>Pengeoverførsel</p> <input type="checkbox" class="form-control" id="transfer">
+                    <br>
+                    <button type="submit" class="btn btn-success pull-left" id="createButton">Opret bruger</button>
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <script src="js/sdk.js"></script>
+    <script src="js/createuser.page.js"></script>
+    <div class="container">
+        <p class="text-muted">2016 © All rights reserved - Brugtbog</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
