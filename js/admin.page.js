@@ -77,12 +77,23 @@ $(document).ready(function () {
      * Delete a book
      */
 
-    $("#deleteBookButton").on("click", function () {
+    $(".DeleteBookButton").on("click", function () {
+        var variable = confirm("Ønsker du at slette denne bog?");
+        if (variable == true) {
 
-        //Show modal
-        $('#deleteBookModal').modal('show');
-
-
+            var $deleteBook = $(this);
+            console.log($deleteBook);
+            var book = {
+                isbn: $deleteBook.data("isbn")
+            };
+            SDK.Admin.page.deletebook(book, function (err, data) {
+                if (err) throw JSON.stringify(err);
+                location.reload();
+            })
+        }
+        else {
+            window.close();
+        }
   /**
    * Add a new User
    */
