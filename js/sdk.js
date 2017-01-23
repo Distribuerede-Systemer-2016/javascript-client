@@ -37,70 +37,92 @@ var SDK = {
       SDK.request({method: "POST", url: "/createbook", data: data }, cb);
     }
   },
-    Ads: {
-        getAll: function (cb) {
-            SDK.request({method: "GET", url: "/getads"}, cb);
-        },
-        create: function (data, cb) {
-            SDK.request({method: "POST", url: "/createads", data: data }, cb);
-        }
+
+  Ad: {
+    create: function (data, cb) {
+      SDK.request({method: "POST", url: "/createad", data: data}, cb);
     },
+    delete: function (data, cb) {
+      SDK.request({method: "POST", url: "/deletead", data: data}, cb);
+    },
+    show: function (cb) {
+      SDK.request({method: "GET", url: "/getads"}, cb);
+    },
+    showuserads: function (cb) {
+      SDK.request({method: "GET", url: "/getmyads"}, cb);
+    },
+    updatemyads: function (data, cb) {
+      SDK.request({method: "POST", url: "/updatead", data: data}, cb);
+    },
+    showreservedads: function (cb) {
+      SDK.request({method: "GET", url: "/getmyreservations"}, cb);
+    },
+    reservead: function(data, cb) {
+      SDK.request({method: "POST", url: "/reservead", data: data}, cb);
+    },
+    deletereservation: function(data, cb) {
+      SDK.request({method: "POST", url: "/deletereservation", data: data}, cb);
+    }
+  },
+
   User: {
-    getAll: function (cb) {
+    create: function (data, cb) {
+      SDK.request({method: "POST", url:"/createuser", data: data}, cb);
+    },
+    updateuser: function (data, cb) {
+      SDK.request({method: "POST", url:"/updateuser", data: data}, cb);
+    },
+    deletemyuser: function (data, cb) {
+      SDK.request({method: "POST", url:"/deleteuser", data: data}, cb);
+    },
+    getmyuser: function (cb) {
+      SDK.request({method: "GET", url: "/getuser"}, cb)
+    }
+  },
+
+  Admin: {
+    showusers: function (cb) {
       SDK.request({method: "GET", url: "/getusers"}, cb);
     },
-    current:function () {
-        return SDK.Storage.load("getuser");
+    deleteuser: function (data, cb) {
+      SDK.request({method: "POST", url: "/deleteuseradmin", data: data}, cb)
     },
-      create: function (data, cb) {
-          SDK.request({method: "POST", url: "/createuser" }, cb);
+    deletebook: function (data, cb) {
+      SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
     },
-      xhrFields: { withCredentials: true },
+    updateadmin: function (data, cb) {
+      SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
+    }
   },
-    Admin: {
-        showusers: function (cb) {
-            SDK.request({method: "GET", url: "/getusers"}, cb);
-        },
-        deleteuser: function (data, cb) {
-            SDK.request({method: "POST", url: "/deleteuseradmin", data: data}, cb)
-        },
-        deletebook: function (data, cb) {
-            SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
-        },
-        updateadmin: function (data, cb) {
-            SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
-        },
-        xhrFields: { withCredentials: true },
-    },
-
-  logOut:function() {
-    SDK.Storage.remove("tokenId");
-    SDK.Storage.remove("userId");
-    SDK.Storage.remove("user");
-  },
-
-  login: function (username, password, cb) {
-    this.request({
-      data: {
-        username: username,
-        password: password
+    Identification: {
+      logOut:function() {
+        SDK.Storage.remove("tokenId");
+        SDK.Storage.remove("userId");
+        SDK.Storage.remove("user");
       },
-        xhrFields: { withCredentials: true },
-      url: "/login",
-      method: "POST"
-    }, function (err, data) {
 
-      //On login-error
-      if (err) return cb(err);
+      login: function (username, password, cb) {
+          SDK.request({
+              data: {
+                username: username,
+                password: password
+              },
+                url: "/login",
+                method: "POST"
+              }, function (err, data) {
 
-      SDK.Storage.persist("tokenId", data.id);
-      SDK.Storage.persist("userId", data.userId);
-      SDK.Storage.persist("user", data.user);
+                //On login-error
+                if (err) return cb(err);
 
-      cb(null, data);
+                SDK.Storage.persist("tokenId", data.id);
+                SDK.Storage.persist("userId", data.userId);
+                SDK.Storage.persist("user", data.user);
 
-    });
-  },
+                cb(null, data);
+
+            });
+        }
+    },
 
   Storage: {
     prefix: "BookStoreSDK",

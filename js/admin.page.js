@@ -73,14 +73,12 @@ $(document).ready(function () {
         })
 
     });
-*/
+
 
   var currentUser = SDK.User.current();
   $("#currentUser").text(currentUser.user);
 
-  /**
-   * Add a new Book
-   */
+
   $("#createBookButton").on("click", function () {
 
     //Show modal
