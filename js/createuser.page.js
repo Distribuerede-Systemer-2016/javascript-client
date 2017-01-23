@@ -25,7 +25,3 @@ $("#addNewUserButton").on("click", function() {
 
 });
 
-
-
-
- */
