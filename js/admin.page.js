@@ -16,29 +16,64 @@ $(document).ready(function () {
               "<td><input role='button' value='Slet bog' class='btn btn-success btn-md DeleteBookButton' data-isbn=" + book.isbn + " ></td>"+
               "</tr>")
     });
+        /**
+         * Delete a book
+         */
+        $(".DeleteBookButton").on("click", function () {
+            var variable = confirm("Ønsker du at slette denne bog?");
+            if (variable == true) {
 
+                var $deleteBook = $(this);
+                console.log($deleteBook);
+                var book = {
+                    isbn: $deleteBook.data("isbn")
+                };
+                SDK.Admin.deletebook(book, function (err, data) {
+                    if (err) throw JSON.stringify(err);
+                    location.reload();
+                })
+            }
+            else {
+                window.close();
+            }
   });
 
   //Fires on page-load
-  SDK.User.getAll(function (err, users) {
-    if (err) throw err;
+    SDK.Admin.showusers(function (err, data) {
+        if (err) throw JSON.stringify(err);
+        console.log(data);
 
-    var $usersTableBody = $("#userTableBody");
-    users.forEach(function (user) {
+        var $userTableBody = $("#userTableBody");
+        data.forEach(function (admin) {
+            $userTableBody.append(
+                "<tr>" +
+                "<td>" + admin.username + "</td>" +
+                "<td>" + admin.email + "</td>" +
+                "<td>" + admin.phonenumber + "</td>" +
+                "<td>" + admin.address + "</td>" +
+                //slet knappen skal kun komme når der er en bruger der er logget ind
+                "<td><input role='button' value='Slet bruger' class='btn btn-success btn-md DeleteUserButton' data-userid=" + admin.userId + "></td>" +
+                "</tr>")
+        });
 
-      $usersTableBody.append(
-        "<tr>" +
-        "<td>" + user.username + "</td>" +
-        "<td>" + user.email + "</td>" +
-        "<td>" + user.phonenumber + "</td>" +
-        "<td>" + user.adress + "</td>" +
-        "<td>" + user.mobilepay + "</td>" +
-        "<td>" + user.cash + "</td>" +
-        "<td>" + user.transfer + "</td>" +
-        "</tr>");
+        $(".DeleteUserButton").on("click", function () {
+            window.alert("Er du sikker på at du vil slette brugeren?");
+
+            var $deleteUser = $(this);
+
+            var user = {
+                id: $deleteUser.data("userid")
+            };
+            SDK.Admin.deleteuser(user, function (err, data) {
+                if (err) throw JSON.stringify(err);
+                location.reload();
+
+            })
+
+        })
+
     });
 
-  });
 
   var currentUser = SDK.User.current();
   $("#currentUser").text(currentUser.user);
@@ -73,27 +108,9 @@ $(document).ready(function () {
     });
 
   });
-    /**
-     * Delete a book
-     */
 
-    $(".DeleteBookButton").on("click", function () {
-        var variable = confirm("Ønsker du at slette denne bog?");
-        if (variable == true) {
 
-            var $deleteBook = $(this);
-            console.log($deleteBook);
-            var book = {
-                isbn: $deleteBook.data("isbn")
-            };
-            SDK.Admin.deletebook(book, function (err, data) {
-                if (err) throw JSON.stringify(err);
-                location.reload();
-            })
-        }
-        else {
-            window.close();
-        }
+
   /**
    * Add a new User
    */

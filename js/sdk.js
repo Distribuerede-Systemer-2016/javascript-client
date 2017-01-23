@@ -69,8 +69,8 @@ var SDK = {
         },
         updateadmin: function (data, cb) {
             SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
-        }
-
+        },
+        xhrFields: { withCredentials: true },
     },
 
   logOut:function() {
