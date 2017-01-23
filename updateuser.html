@@ -54,7 +54,59 @@
                 </div>
 
             </div>
+            <div class="jumbotron">
+                <p>Her kan du ændre oplysningerne for din bruger!</p>
+                <fieldset>
 
+                    <legend>Opdater bruger</legend>
+
+                    <div class="form-group">
+                        <label for="newUserUserName" class="col-lg-2 control-label">Username</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="newUserUserName" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newUserPassword" class="col-lg-2 control-label">Password</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="newUserPassword" placeholder="Password">
+                        </div>
+
+                        <div>
+                            <label for="newUserPhonenumber" class="col-lg-2 control-label">Mobilnummer</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="newUserPhonenumber" placeholder="Mobilnummer">
+                            </div>
+
+                            <div>
+                                <label for="newUserAdress" class="col-lg-2 control-label">Adresse</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="newUserAdress" placeholder="Adresse">
+                                </div>
+
+                                <div>
+                                    <label for="newUserEmail" class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="newUserEmail" placeholder="Email">
+                                    </div>
+
+                                    <h3>Hvordan vil du modtage betaling?</h3>
+                                </div>
+                                <div><label class="checkbox-inline"><input type="checkbox" id="mobilepay" value="mobilepay">Mobilepay</label>
+                                    <div><label class="checkbox-inline"><input type="checkbox" id="cash" value="cash">Kontant</label>
+                                        <div><label class="checkbox-inline"><input type="checkbox" id="transfer" value="transfer">Bankoverførsel</label>
+                                        </div>
+
+
+                                        <button class="btn btn-success pull-right" id="updateUserButton">Opdater bruger</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
 
 
         </div>
