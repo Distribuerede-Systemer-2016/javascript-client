@@ -1,39 +1,38 @@
-    $(document).ready(function () {
 
-        $("#loginButton").on("click", function(e){
-            e.preventDefault();
+$(document).ready(function () {
 
-            var username = $("#username").val();
-            var password = $("#password").val();
+  $("#loginButton").on("click", function(e){
+    e.preventDefault();
 
-            SDK.Identification.login(username, password, function(err, data){
+    var email = $("#inputEmail").val();
+    var pw = $("#inputPassword").val();
 
+    SDK.login(email, pw, function(err, data){
 
-                //On wrong credentials
-                if(err) {
-                    return $("#loginForm").find(".form-group").addClass("has-error");
+      //On wrong credentials
+      if(err) {
+        return $("#loginForm").find(".form-group").addClass("has-error");
+      }
 
-                }
+      //Login OK!
+        if (data.type == 1){
+            $("#loginForm").find(".form-group").addClass("has-success");
+            window.location.href = "admin.html";
+        }
+        else{
+            $("#loginForm").find(".form-group").addClass("has-success");
+            window.location.href = "user.html";
 
-                //Login OK!
-                if (data.type == 1){
-                    $("#loginForm").find(".form-group").addClass("has-success");
-                    window.location.href = "adminpage.html";
-                }
-                else{
-                    $("#loginForm").find(".form-group").addClass("has-success");
-                    window.location.href = "userpage.html";
+        }
 
-                }
-
-
-            });
-        });
 
         $("#logOutLink").on("click", function(){
-            SDK.Identification.logOut();
+            SDK.logOut();
             window.location.href = "index.html";
-
         });
 
     });
+
+  });
+
+});
