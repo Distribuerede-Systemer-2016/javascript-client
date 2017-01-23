@@ -37,7 +37,7 @@ $(document).ready(function () {
                 window.close();
             }
   });
-
+/*
   //Fires on page-load
     SDK.Admin.showusers(function (err, data) {
         if (err) throw JSON.stringify(err);
@@ -73,7 +73,7 @@ $(document).ready(function () {
         })
 
     });
-
+*/
 
   var currentUser = SDK.User.current();
   $("#currentUser").text(currentUser.user);
