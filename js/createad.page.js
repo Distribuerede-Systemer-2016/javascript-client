@@ -16,8 +16,8 @@ $("#addNewAdButton").on("click", function() {
         if (err) throw JSON.stringify(err);
         console.log(ad.isbn);
 
-        alert("Tillykke, du har nu opretet en ny annonce!");
-        window.location.href = "adsUser.html";
+        alert("Tillykke, du har nu oprettet en ny annonce!");
+        window.location.href = "ads.html";
     });
 
 });
