@@ -23,6 +23,7 @@ $(document).ready(function () {
             window.location.href = "ads.html";
         }
 
+
         $("#logOutLink").on("click", function(){
             SDK.logOut();
             window.location.href = "index.html";
