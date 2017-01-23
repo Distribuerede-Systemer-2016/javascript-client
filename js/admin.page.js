@@ -100,14 +100,7 @@ $(document).ready(function () {
   $("#addNewUserButton").on("click", function () {
 
   });
-        //Create book
-        SDK.Book.delete(book, function(err, data){
-            if(err) throw err;
-
-            $("#deleteBookModale").modal("hide");
-        });
-
-    });
+ });
 
 });
   $("#logOutLink").on("click", function(){
