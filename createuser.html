@@ -44,26 +44,56 @@
             </nav>
 
             <div class="jumbotron">
-                <h1>Opret din bruger allerede i dag</h1>
-                <p>Det er gratis at blive medlem af brugtbog</p>
+                <h1>Velkommen til brugeroprettelse</h1>
+                <p>Her kan du oprette en bruger!</p>
+                <fieldset>
 
-                <form>
-                    <input type="text" class="form-control" id="username" placeholder="Brugernavn" var="username">
-                    <input type="password" class="form-control" id="password" placeholder="Kodeord">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                    <input type="text"class="form-control" id="address" placeholder="Adresse">
-                    <input type="number" class="form-control" id="phonenumber" placeholder="Telefonnummer">
-                    <p>Mobilepay</p> <input type="checkbox" class="form-control" id="mobilepay">
-                    <p>Kontant</p> <input type="checkbox" class="form-control" id="cash">
-                    <p>Pengeoverførsel</p> <input type="checkbox" class="form-control" id="transfer">
-                    <br>
-                    <button type="submit" class="btn btn-success pull-left" id="createUserButton">Opret bruger</button>
+                    <legend>Opret bruger</legend>
 
-                </form>
+                    <div class="form-group">
+                        <label for="newUserUserName" class="col-lg-2 control-label">Username</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="newUserUserName" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newUserPassword" class="col-lg-2 control-label">Password</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="newUserPassword" placeholder="Password">
+                        </div>
+
+                        <div>
+                            <label for="newUserPhonenumber" class="col-lg-2 control-label">Mobilnummer</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="newUserPhonenumber" placeholder="Mobilnummer">
+                            </div>
+
+                            <div>
+                                <label for="newUserAdress" class="col-lg-2 control-label">Adresse</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="newUserAdress" placeholder="Adresse">
+                                </div>
+
+                                <div>
+                                    <label for="newUserEmail" class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="newUserEmail" placeholder="Email">
+                                    </div>
+
+                                    <h3>Hvordan vil du modtage betaling?</h3>
+                                </div>
+                                <div><label class="checkbox-inline"><input type="checkbox" id="mobilepay" value="mobilepay">Mobilepay</label>
+                                    <div><label class="checkbox-inline"><input type="checkbox" id="cash" value="cash">Kontant</label>
+                                        <div><label class="checkbox-inline"><input type="checkbox" id="transfer" value="transfer">Bankoverførsel</label>
+                                        </div>
 
 
+                                        <button class="btn btn-success pull-right" id="addNewUserButton">Opret bruger</button>
 
+                </fieldset>
             </div>
+        </div>
 
         </div>
     </div>

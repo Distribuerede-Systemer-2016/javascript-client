@@ -21,7 +21,7 @@ $(document).ready(function () {
         }
         else{
             $("#loginForm").find(".form-group").addClass("has-success");
-            window.location.href = "user.html";
+            window.location.href = "ads.html";
 
         }
 
