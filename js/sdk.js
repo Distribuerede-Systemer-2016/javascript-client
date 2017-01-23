@@ -45,17 +45,20 @@ var SDK = {
             SDK.request({method: "POST", url: "/createads", data: data }, cb);
         }
     },
-  User: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/getusers"}, cb);
-    },
-    current:function () {
-        return SDK.Storage.load("getuser");
-    },
-      create: function (data, cb) {
-          SDK.request({method: "POST", url: "/createuser" }, cb);
-    },
-      xhrFields: { withCredentials: true },
+        User: {
+            create: function (data, cb) {
+                SDK.request({method: "POST", url:"/createuser", data: data}, cb);
+            },
+            updateuser: function (data, cb) {
+                SDK.request({method: "POST", url:"/updateuser", data: data}, cb);
+            },
+            deletemyuser: function (data, cb) {
+                SDK.request({method: "POST", url:"/deleteuser", data: data}, cb);
+            },
+            getmyuser: function (cb) {
+                SDK.request({method: "GET", url: "/getuser"}, cb)
+            }
+        },
   },
     Admin: {
         showusers: function (cb) {
