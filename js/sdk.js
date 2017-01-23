@@ -39,29 +39,11 @@ var SDK = {
   },
 
   Ad: {
-    create: function (data, cb) {
-      SDK.request({method: "POST", url: "/createad", data: data}, cb);
-    },
-    delete: function (data, cb) {
-      SDK.request({method: "POST", url: "/deletead", data: data}, cb);
-    },
-    show: function (cb) {
+    getAll: function (cb) {
       SDK.request({method: "GET", url: "/getads"}, cb);
     },
-    showuserads: function (cb) {
-      SDK.request({method: "GET", url: "/getmyads"}, cb);
-    },
-    updatemyads: function (data, cb) {
-      SDK.request({method: "POST", url: "/updatead", data: data}, cb);
-    },
-    showreservedads: function (cb) {
-      SDK.request({method: "GET", url: "/getmyreservations"}, cb);
-    },
-    reservead: function(data, cb) {
-      SDK.request({method: "POST", url: "/reservead", data: data}, cb);
-    },
-    deletereservation: function(data, cb) {
-      SDK.request({method: "POST", url: "/deletereservation", data: data}, cb);
+    create: function (data, cb) {
+      SDK.request({method: "POST", url: "/createads", data: data }, cb);
     }
   },
 
@@ -80,49 +62,50 @@ var SDK = {
     }
   },
 
-  Admin: {
-    showusers: function (cb) {
-      SDK.request({method: "GET", url: "/getusers"}, cb);
+    Admin: {
+        showusers: function (cb) {
+            SDK.request({method: "GET", url: "/getusers"}, cb);
+        },
+        deleteuser: function (data, cb) {
+            SDK.request({method: "POST", url: "/deleteuseradmin", data: data}, cb)
+        },
+        deletebook: function (data, cb) {
+            SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
+        },
+        updateadmin: function (data, cb) {
+            SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
+        },
+        xhrFields: { withCredentials: true },
     },
-    deleteuser: function (data, cb) {
-      SDK.request({method: "POST", url: "/deleteuseradmin", data: data}, cb)
-    },
-    deletebook: function (data, cb) {
-      SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
-    },
-    updateadmin: function (data, cb) {
-      SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
-    }
+
+  logOut:function() {
+    SDK.Storage.remove("tokenId");
+    SDK.Storage.remove("userId");
+    SDK.Storage.remove("user");
   },
-    Identification: {
-      logOut:function() {
-        SDK.Storage.remove("tokenId");
-        SDK.Storage.remove("userId");
-        SDK.Storage.remove("user");
+
+  login: function (username, password, cb) {
+    this.request({
+      data: {
+        username: username,
+        password: password
       },
+        xhrFields: { withCredentials: true },
+      url: "/login",
+      method: "POST"
+    }, function (err, data) {
 
-      login: function (username, password, cb) {
-        SDK.request({
-           data: {
-             username: username,
-             password: password
-           },
-             url: "/login",
-             method: "POST"
-           }, function (err, data) {
+      //On login-error
+      if (err) return cb(err);
 
-           //On login-error
-           if (err) return cb(err);
+      SDK.Storage.persist("tokenId", data.id);
+      SDK.Storage.persist("userId", data.userId);
+      SDK.Storage.persist("user", data.user);
 
-             SDK.Storage.persist("tokenId", data.id);
-             SDK.Storage.persist("userId", data.userId);
-             SDK.Storage.persist("user", data.user);
+      cb(null, data);
 
-             cb(null, data);
-
-           });
-        }
-    },
+    });
+  },
 
   Storage: {
     prefix: "BookStoreSDK",
