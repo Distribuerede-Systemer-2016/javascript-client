@@ -102,25 +102,25 @@ var SDK = {
       },
 
       login: function (username, password, cb) {
-          SDK.request({
-              data: {
-                username: username,
-                password: password
-              },
-                url: "/login",
-                method: "POST"
-              }, function (err, data) {
+        SDK.request({
+           data: {
+             username: username,
+             password: password
+           },
+             url: "/login",
+             method: "POST"
+           }, function (err, data) {
 
-                //On login-error
-                if (err) return cb(err);
+           //On login-error
+           if (err) return cb(err);
 
-                SDK.Storage.persist("tokenId", data.id);
-                SDK.Storage.persist("userId", data.userId);
-                SDK.Storage.persist("user", data.user);
+             SDK.Storage.persist("tokenId", data.id);
+             SDK.Storage.persist("userId", data.userId);
+             SDK.Storage.persist("user", data.user);
 
-                cb(null, data);
+             cb(null, data);
 
-            });
+           });
         }
     },
 
