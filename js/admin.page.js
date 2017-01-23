@@ -86,7 +86,7 @@ $(document).ready(function () {
             var book = {
                 isbn: $deleteBook.data("isbn")
             };
-            SDK.Admin.page.deletebook(book, function (err, data) {
+            SDK.Admin.deletebook(book, function (err, data) {
                 if (err) throw JSON.stringify(err);
                 location.reload();
             })

@@ -57,7 +57,21 @@ var SDK = {
     },
       xhrFields: { withCredentials: true },
   },
+    Admin: {
+        showusers: function (cb) {
+            SDK.request({method: "GET", url: "/getusers"}, cb);
+        },
+        deleteuser: function (data, cb) {
+            SDK.request({method: "POST", url: "/deleteuseradmin", data: data}, cb)
+        },
+        deletebook: function (data, cb) {
+            SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
+        },
+        updateadmin: function (data, cb) {
+            SDK.request({method: "POST", url: "/updateuseradmin", data: data}, cb);
+        }
 
+    },
 
   logOut:function() {
     SDK.Storage.remove("tokenId");
