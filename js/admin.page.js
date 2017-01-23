@@ -13,7 +13,8 @@ $(document).ready(function () {
               "<td>" + book.isbn  + "</td>" +
               "<td>" + book.author + "</td>" +
               "<td>" + book.edition + "</td>" +
-              "</tr>");
+              "<td><input role='button' value='Slet bog' class='btn btn-success btn-md DeleteBookButton' data-isbn=" + book.isbn + " ></td>"+
+              "</tr>")
     });
 
   });
