@@ -50,34 +50,51 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Dine annoncer</h3>
+        <h3 class="panel-title">Opret annonce</h3>
     </div>
-    <div class="panel-body">
+    <div class="jumbotron">
+        <h1>Velkommen til annonceoprettelse</h1>
+        <p>Her kan du oprette en annonce!</p>
+        <fieldset>
 
-        <table class="table table-striped">
-            <thead>
+            <legend>Opret annonce</legend>
 
-            <th>Titel</th>
-            <th>Forfatter(e)</th>
-            <th>Udgave</th>
-            <th>Rating</th>
-            <th>Pris</th>
-            </thead>
-            <tbody id="yourAdsTableBody">
+            <div>
+                <label for="newAdIsbn" class="col-lg-2 control-label">ISBN</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="newAdIsbn" placeholder="ISBN">
+                </div>
 
-            </tbody>
-        </table>
+            </div>
 
-        <hr>
+            <div>
+                <label for="newAdComment" class="col-lg-2 control-label">Kommentarer</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="newAdComment" placeholder="Kommentarer">
+                </div>
 
-        <form>
-            <fieldset id="autoHeight">
+                <div>
+                    <label for="newAdRating" class="col-lg-2 control-label">Stand</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="newAdRating" placeholder="skriv en vurdering af standen mellem 1 og 5">
+                    </div>
 
-                <select name="drop_down" id="dropDownBooks">
-                    <option value="None" selected="Selected">Select type</option>
-                </select>
-            </fieldset>
-        </form>
+
+                    <div>
+                        <label for="newAdPrice" class="col-lg-2 control-label">Pris</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="newAdPrice" placeholder="Pris i kr">
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-success pull-right" id="addNewAdButton">Opret Annonce</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+</div>
 
 
 

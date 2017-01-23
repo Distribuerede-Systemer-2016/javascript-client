@@ -45,7 +45,7 @@ var SDK = {
     delete: function (data, cb) {
       SDK.request({method: "POST", url: "/deletead", data: data}, cb);
     },
-    show: function (cb) {
+    getAll: function (cb) {
       SDK.request({method: "GET", url: "/getads"}, cb);
     },
     showuserads: function (cb) {

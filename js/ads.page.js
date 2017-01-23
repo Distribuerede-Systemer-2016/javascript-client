@@ -4,22 +4,43 @@
 $(document).ready(function () {
 
     //Fires on page-load
-    SDK.Ads.getAll(function (err, data) {
-        if (err) throw err;
+    SDK.Ad.getAll(function (err, data) {
+        if (err) throw JSON.stringify(err);
+        console.log(data);
 
 
         var $adsTableBody = $("#adsTableBody");
-        data.forEach(function (ads, i) {
-
+        data.forEach(function (ad) {
             $adsTableBody.append(
                 "<tr>" +
-                "<td>" + ads.bookTitle + "</td>" +
-                "<td>" + ads.bookAuthor + "</td>" +
-                "<td>" + ads.bookEdition  + "</td>" +
-                "<td>" + ads.rating + "</td>" +
-                "<td>Kr. " + ads.price + ",-</td>" +
-            "</tr>");
+                "<td>" + ad.bookTitle + "</td>" +
+                "<td>" + ad.bookAuthor + "</td>" +
+                "<td>" + ad.bookEdition + "</td>" +
+                "<td>" + ad.isbn + "</td>" +
+                "<td>" + ad.rating + "</td>" +
+                "<td>" + ad.comment + "</td>" +
+                "<td>" + ad.price + "</td>" +
+                "<td><input role='button' value='Reserver annonce' class='btn btn-success btn-md ReserveAdButton' data-adid=" + ad.adId + "></td>" +
+                "</tr>")
         });
+        $(".ReserveAdButton").on("click", function () {
+            //window.alert("Er du sikker på at du vil reservere denne annonce?");
+            var variable = confirm("Ønsker du at reservere denne bog?");
+            if (variable == true) {
+
+                var $reserveAd = $(this);
+                var ad = {
+                    id: $reserveAd.data("adid")
+                };
+                SDK.Ad.reservead(ad, function (err, data) {
+                    if (err) throw JSON.stringify(err);
+                    location.reload();
+                })
+            }
+            else {
+                window.close();
+            }
+        })
 
     });
 
